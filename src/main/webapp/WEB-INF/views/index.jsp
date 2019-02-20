@@ -43,6 +43,7 @@
 			</tbody>
 		</table>
 </div>
+
 <p> <a href="/items">Shop</a>
 
 

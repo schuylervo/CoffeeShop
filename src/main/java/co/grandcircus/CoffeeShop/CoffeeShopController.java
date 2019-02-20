@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.grandcircus.CoffeeShop.Dao.ItemDao;
@@ -23,13 +22,64 @@ public class CoffeeShopController {
 	
 	@Autowired
 	private UserDao userDao;
-	
+	/*
 	@RequestMapping("/")
 	public ModelAndView showHome() {
 		ModelAndView mav = new ModelAndView("index");
+		
 		return mav;
 	}
+	*/
 	
+
+	@RequestMapping("/")
+	public ModelAndView listStuff() {
+		List<Item> listOfItems = itemDao.findAll();
+		return new ModelAndView("index", "items", listOfItems);
+	}
+	
+	@RequestMapping("/{id}")
+	public ModelAndView detailStuff(@PathVariable("id") Long id) {
+		Item item = itemDao.findById(id);
+		
+		return new ModelAndView("detail", "item", item);
+	}
+	
+	@RequestMapping("/{id}/edit")
+	public ModelAndView editStuff(@PathVariable("id") Long id) {
+		Item item = itemDao.findById(id);
+		
+		return new ModelAndView("edit", "item", item);
+	}
+	
+	@PostMapping("/{id}/edit")
+	public ModelAndView saveStuff(@PathVariable("id") Long id, Item item) {
+		item.setId(id);
+		
+		itemDao.update(item);
+		
+		return new ModelAndView("redirect:/" + id);
+	}
+	
+	@PostMapping("/add")
+	public ModelAndView addStuff(Item item) {		
+		itemDao.create(item);
+		
+		return new ModelAndView("redirect:/");
+	}
+	
+	
+	@RequestMapping("/{id}/delete")
+	public ModelAndView removeStuff(@PathVariable("id") Long id) {
+		itemDao.delete(id);
+		
+		return new ModelAndView("redirect:/");
+	}
+	
+	
+	
+	
+		
 	@RequestMapping("/items")
 	public ModelAndView list() {
 		List<Item> listOfItems = itemDao.findAll();
