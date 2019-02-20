@@ -1,0 +1,36 @@
+@charset "ISO-8859-1";
+
+body {
+  background-color: lightblue;
+}
+
+h1 {
+	color: red;
+}
+
+sipping {
+  height: 300px;
+}
+
+#coffeesupplies {
+	height: 300px;
+}
+#nostarbucks {
+	height: 300px;
+}
+
+#thumbsup {
+	height: 200px;
+}
+
+#deal {
+	height: 150px;
+}
+
+#writtenorder {
+	height: 150px;
+}
+
+#savemoney {
+	height: 200px;
+}
