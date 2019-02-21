@@ -1,6 +1,7 @@
 @charset "ISO-8859-1";
 
 body {
+  background-image: url("coffeeshop.jpg");
   background-color: lightblue;
 }
 
@@ -8,8 +9,9 @@ h1 {
 	color: red;
 }
 
-.table {
-	border padding
+.itemtable {
+	border: 1px solid black;
+	border-collapse: collapse;
 }
 
 sipping {

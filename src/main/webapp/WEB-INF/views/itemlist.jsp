@@ -6,7 +6,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Coffee Shop Items For Sale</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 <h1>Coffee Shop Items For Sale</h1>
@@ -19,14 +20,15 @@
 			<tbody>
 				<c:forEach var="item" items="${items}">
 				<tr>
-					<td><a href="/${item.id}">${item.name}</a></td>
+					<td><a href="/items/${item.id}">${item.name}</a></td>
 					<td>${item.description}</td>
 					<td>${item.quantity}</td>
-					<td>${item.price}</td>
+					<td>$${item.price}</td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<a href="/items/add" >Add Item</a>
+
 </body>
 </html>

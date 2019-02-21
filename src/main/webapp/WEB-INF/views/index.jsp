@@ -6,47 +6,55 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 	<h1> Welcome to the Coffee Shop Supply Depot!</h1>
 	
 <h3>
-<p> Get your fix with our top of line coffee shop supplies from an independent, non-corporate coffee supplier.
+<p> Get your fix with our premium coffee shop supplies!
 </p>
-<img id="sipping" src="images/SippingTeaColbertStewart.gif">
-<img id="coffeesupplies" src="images/coffeesupplies.jpg">
-<img id="nostarbucks" src="images/nostarbucks.jpg">
 
 <p> Click below to register as a user so that you can buy the best coffee shop supplies available anywhere at an affordable price.</p>
+
+</h3>
+<p> 
+<input type = button onclick="location.href='/user-registration-form'" value='Click here to register'>
+</p>
+
 <img id="thumbsup" src="images/thumbsup.svg.png">
 <img id="deal" src="images/deal.jpg">
-</h3>
-<p> <a href="/user-registration-form" >Register as a user</a> </p>
+
+<p> Here is a list of the coffee shop supplies that are available to purchase: </p>
 
 <div>
 <table>
 			<thead>
-				<tr>
-					<th>Name of Item</th><th>Description</th><th>Quantity</th><th>Price</th>
+				<tr class ="itemtable">
+					<th class ="itemtable">Name of Item</th><th>Description</th><th>Quantity</th><th>Price</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="item" items="${items}">
 				<tr>
-					<td><a href="/${item.id}">${item.name}</a></td>
-					<td>${item.description}</td>
-					<td>${item.quantity}</td>
-					<td>${item.price}</td>
+					<td class ="itemtable">${item.name}</td>
+					<td class ="itemtable">${item.description}</td>
+					<td class ="itemtable">${item.quantity}</td>
+					<td class ="itemtable">$${item.price}</td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 </div>
 
-<p> <a href="/items">Shop</a>
-
-
+<p> 
+<input type = button onclick="location.href='/items'" value='Administrators Enter Here'>
+<p>
+<img id="sipping" src="images/SippingTeaColbertStewart.gif">
+<img id="coffeesupplies" src="images/coffeesupplies.jpg">
+<img id="nostarbucks" src="images/nostarbucks.jpg">
+</p>
 
 <p>Disclaimer: Stewart and Colbert have not endorsed these products. </p>
 </body>

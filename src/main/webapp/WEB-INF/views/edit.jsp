@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <h1>Coffee Shop Items For Sale</h1>
@@ -25,7 +27,7 @@
 			</tr>
 			<tr>
 				<th >Price</th>
-				<td><input type="number" name="price" value="${item.price}" /></td>
+				<td><input type="number" name="price" step="0.01" value="${item.price}" /></td>
 			</tr>
 		</table>
 		<button type="submit" >Save Changes</button>

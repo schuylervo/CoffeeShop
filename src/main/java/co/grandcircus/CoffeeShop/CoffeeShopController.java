@@ -38,45 +38,6 @@ public class CoffeeShopController {
 		return new ModelAndView("index", "items", listOfItems);
 	}
 	
-	@RequestMapping("/{id}")
-	public ModelAndView detailStuff(@PathVariable("id") Long id) {
-		Item item = itemDao.findById(id);
-		
-		return new ModelAndView("detail", "item", item);
-	}
-	
-	@RequestMapping("/{id}/edit")
-	public ModelAndView editStuff(@PathVariable("id") Long id) {
-		Item item = itemDao.findById(id);
-		
-		return new ModelAndView("edit", "item", item);
-	}
-	
-	@PostMapping("/{id}/edit")
-	public ModelAndView saveStuff(@PathVariable("id") Long id, Item item) {
-		item.setId(id);
-		
-		itemDao.update(item);
-		
-		return new ModelAndView("redirect:/" + id);
-	}
-	
-	@PostMapping("/add")
-	public ModelAndView addStuff(Item item) {		
-		itemDao.create(item);
-		
-		return new ModelAndView("redirect:/");
-	}
-	
-	
-	@RequestMapping("/{id}/delete")
-	public ModelAndView removeStuff(@PathVariable("id") Long id) {
-		itemDao.delete(id);
-		
-		return new ModelAndView("redirect:/");
-	}
-	
-	
 	
 	
 		
@@ -123,10 +84,15 @@ public class CoffeeShopController {
 	
 	@RequestMapping("/items/{id}/delete")
 	public ModelAndView remove(@PathVariable("id") Long id) {
-		itemDao.delete(id);
-		
+		try {
+			itemDao.delete(id);
+		} catch (Exception ex) {
+			System.err.println("Error during deletion.");
+			ex.printStackTrace(System.err);
+		}
 		return new ModelAndView("redirect:/items");
 	}
+	
 	
 	
 	
@@ -140,8 +106,8 @@ public class CoffeeShopController {
 	
 	@RequestMapping("/user-summary")
 	public ModelAndView showSummary( User user) {
-		//@RequestParam("first_name") String firstName,
-		//@RequestParam("last_name") String lastName,
+		//@RequestParam("firstName") String firstName,
+		//@RequestParam("lastName") String lastName,
 		//@RequestParam("email") String email,
 		//@RequestParam("birthday") String birthday,
 		//@RequestParam("password") String password,
@@ -149,8 +115,8 @@ public class CoffeeShopController {
 		//@RequestParam("barista") String barista
 //	) {	
 //		ModelAndView mav = new ModelAndView("user-summary");
-//		mav.addObject("first_name", firstName);
-//		mav.addObject("last_name", lastName);
+//		mav.addObject("firstName", firstName);
+//		mav.addObject("lastName", lastName);
 //		mav.addObject("email", email);
 //		mav.addObject("birthday", birthday);
 //		mav.addObject("roast", roast);
