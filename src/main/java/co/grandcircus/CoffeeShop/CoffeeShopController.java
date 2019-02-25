@@ -57,7 +57,7 @@ public class CoffeeShopController {
 	}
 	
 	@RequestMapping("/add-to-cart/{id}")
-	public ModelAndView addToCart(CartItem cartItem, @RequestParam("itemId") Long itemId) { 
+	public ModelAndView addToCart(@PathVariable("id") CartItem cartItem, @RequestParam("itemId") Long itemId) { 
 		if (itemId == null) {
 			cartItem.setItem(null);
 		} else {
