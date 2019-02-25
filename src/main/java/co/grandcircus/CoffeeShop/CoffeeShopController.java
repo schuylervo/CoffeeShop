@@ -56,19 +56,21 @@ public class CoffeeShopController {
 		return new ModelAndView("itemlist", "items", listOfItems);
 	}
 	
-	@RequestMapping("/add-to-cart/{id}")
-	public ModelAndView addToCart(@PathVariable("id") CartItem cartItem, @RequestParam("itemId") Long itemId) { 
+	@RequestMapping("/add-to-cart")
+	public ModelAndView addToCart( @RequestParam("itemId") Long itemId) { 
+		CartItem cartItem = new CartItem();
 		if (itemId == null) {
 			cartItem.setItem(null);
 		} else {
 			cartItem.setItem( itemDao.findById(itemId) );
 			cartItem.setCartQuantity(1);
 		}
+		
 		cartItemDao.create(cartItem);
-		cartItemDao.update(cartItem);
+		System.out.println(cartItem.getId());
 		
 		
-		return new ModelAndView("redirect:/");
+		return new ModelAndView("redirect:/cart");
 	}
 	
 	

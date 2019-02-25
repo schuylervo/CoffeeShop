@@ -36,7 +36,7 @@
 <p> Here is a list of the coffee shop supplies that are available to purchase: </p>
 
 <div>
-<form action="/add-to-cart">
+
 <table>
 			<thead>
 				<tr class ="itemtable">
@@ -46,15 +46,16 @@
 			<tbody>
 				<c:forEach var="item" items="${items}">
 				<tr>
-					<td class ="itemtable">${item.name} <input type = button onclick="location.href='/add-to-cart/${item.id}'" value='Add to Cart'></td>
+					<td class ="itemtable">${item.name} <a href='/add-to-cart?itemId=${item.id}'>Add to Cart</a></td>
 					<td class ="itemtable">${item.description}</td>
 					<td class ="itemtable"><fmt:formatNumber value="${item.price}" type="currency" /></td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<button type="submit" href="/cart">Check Cart</button>
-		</form>
+
+		
+		<a href="/cart">Check Cart</a>
 </div>
 
 <p> 
