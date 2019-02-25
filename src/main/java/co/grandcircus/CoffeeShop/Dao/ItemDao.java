@@ -41,15 +41,15 @@ public class ItemDao {
 	}
 		
 	public void update(Item item) {
-		//String sql = "UPDATE item SET name = ?, description = ?, quantity = ?, price = ? WHERE id = ?";
+		//String sql = "UPDATE item SET name = ?, description = ?, store_quantity = ?, price = ? WHERE id = ?";
 		// Use .update for SQL INSERT, UPDATE, and DELETE			// All the parameters after the first specify values to fill in the ?s in the SQL.
-		//jdbcTemplate.update(sql, item.getName(), item.getDescription(), item.getQuantity(), item.getPrice(), item.getId());
+		//jdbcTemplate.update(sql, item.getName(), item.getDescription(), item.getStoreQuantity(), item.getPrice(), item.getId());
 		em.merge(item);
 	}
 	
 	public void create(Item item) {
-		//String sql = "INSERT INTO item (name, description, quantity, price) VALUES (?, ?, ?, ?)";
-		//jdbcTemplate.update(sql, item.getName(), item.getDescription(), item.getQuantity(), item.getPrice());
+		//String sql = "INSERT INTO item (name, description, store_quantity, price) VALUES (?, ?, ?, ?)";
+		//jdbcTemplate.update(sql, item.getName(), item.getDescription(), item.getStoreQuantity(), item.getPrice());
 		em.persist(item);
 	}
 	

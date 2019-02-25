@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>User Registration Form</title>
 </head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="/style.css" />
@@ -15,7 +15,7 @@
 	</h2>
 <img id="savemoney" src="images/savemoney.jpg">
 
-	<form action="/user-summary">
+	<form action="/user-summary" method="post">
 		<p>
 			<label>First Name:</label> <input type="text" name="firstName" required placeholder="Enter your first name" minlength="1"/>
 		</p>

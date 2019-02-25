@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,13 +24,14 @@
 				<tr>
 					<td><a href="/items/${item.id}">${item.name}</a></td>
 					<td>${item.description}</td>
-					<td>${item.quantity}</td>
-					<td>$${item.price}</td>
+					<td>${item.storeQuantity}</td>
+					<td><fmt:formatNumber value="${item.price}" type="currency" /></td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<a href="/items/add" >Add Item</a>
+		<a href="/">Home</a>
 
 </body>
 </html>

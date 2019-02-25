@@ -16,30 +16,31 @@ public class Item {
 	private Long id;
 	private String name;
 	private String description;
-	private int quantity;
-	private double price;
+	@Column(name="store_quantity")
+	private Integer storeQuantity;
+	private Double price;
 	
 	
 	public Item() {
 		
 	}
 	
-	public Item (Long id, String name, String description, int quantity,
-			double price) {
+	public Item (Long id, String name, String description, Integer storeQuantity,
+			Double price) {
 		
 		this.id = id;
 		this.name= name;
 		this.description= description;
-		this.quantity= quantity;
+		this.storeQuantity= storeQuantity;
 		this.price= price;
 	}
 	
-	public Item (String name, String description, int quantity,
-			double price) {
+	public Item (String name, String description, Integer storeQuantity,
+			Double price) {
 		
 		this.name= name;
 		this.description= description;
-		this.quantity= quantity;
+		this.storeQuantity= storeQuantity;
 		this.price= price;
 	}
 	
@@ -62,21 +63,21 @@ public class Item {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getQuantity() {
-		return quantity;
+	public int getStoreQuantity() {
+		return storeQuantity;
 	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setStoreQuantity(Integer storeQuantity) {
+		this.storeQuantity = storeQuantity;
 	}
 	public double getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 	@Override
 	public String toString() {
-		return "Item [id=" + id + ", name=" + name + ", description=" + description + ", quantity=" + quantity + ", price=" + price + "]";
+		return "Item [id=" + id + ", name=" + name + ", description=" + description + ", storeQuantity=" + storeQuantity + ", price=" + price + "]";
 	}
 	
 }

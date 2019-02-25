@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Add an Item</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="/style.css">
 </head>
@@ -25,7 +25,7 @@
 			<tr>
 				<th >Quantity</th>
 				<td>
-					<td><input type="number" name="quantity" /></td>
+					<td><input type="number" name="storeQuantity" /></td>
 				</td>
 			</tr>
 			<tr>

@@ -1,16 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Schuyler's Coffee Shop Supply Depot</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-	<h1> Welcome to the Coffee Shop Supply Depot!</h1>
+	<header>
+	<span>
+			Hello ${ profile.firstName } ${ profile.lastName }
+	</span>
+	</header>
+	
+	<h1> Welcome to Schuyler's Coffee Shop Supply Depot!</h1>
 	
 <h3>
 <p> Get your fix with our premium coffee shop supplies!
@@ -29,26 +36,29 @@
 <p> Here is a list of the coffee shop supplies that are available to purchase: </p>
 
 <div>
+<form action="/add-to-cart">
 <table>
 			<thead>
 				<tr class ="itemtable">
-					<th class ="itemtable">Name of Item</th><th>Description</th><th>Quantity</th><th>Price</th>
+					<th class ="itemtable">Name of Item</th><th>Description</th><th>Price</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="item" items="${items}">
 				<tr>
-					<td class ="itemtable">${item.name}</td>
+					<td class ="itemtable">${item.name} <input type = button onclick="location.href='/add-to-cart/${item.id}'" value='Add to Cart'></td>
 					<td class ="itemtable">${item.description}</td>
-					<td class ="itemtable">${item.quantity}</td>
-					<td class ="itemtable">$${item.price}</td>
+					<td class ="itemtable"><fmt:formatNumber value="${item.price}" type="currency" /></td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<button type="submit" href="/cart">Check Cart</button>
+		</form>
 </div>
 
 <p> 
+
 <input type = button onclick="location.href='/items'" value='Administrators Enter Here'>
 <p>
 <img id="sipping" src="images/SippingTeaColbertStewart.gif">
@@ -56,6 +66,6 @@
 <img id="nostarbucks" src="images/nostarbucks.jpg">
 </p>
 
-<p>Disclaimer: Stewart and Colbert have not endorsed these products. </p>
+<p>Disclaimer: Neither Stephen Colbert nor Jon Stewart have endorsed these products. </p>
 </body>
 </html>
