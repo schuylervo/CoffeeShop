@@ -16,7 +16,7 @@
 	</span>
 	</header>
 	<p>
-		 Welcome, ${ user.firstName }! Below is a summary of your registration information:
+		 <p class="message">${ message }</p>Thank you for registering. Below is a summary of your registration information:
 	</p>
 	<p>	 
 	First Name: ${ user.firstName } 
@@ -29,6 +29,9 @@
 	</p>
 	<p>
 	Date of Birth: ${ user.birthday }
+	</p>
+	<p>
+	Username: ${ user.username }
 	</p>
 	<p>
 	Password: ${ user.password }

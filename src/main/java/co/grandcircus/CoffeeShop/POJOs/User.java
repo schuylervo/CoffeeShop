@@ -19,6 +19,7 @@ public class User {
 	@Column(name="last_name")
 	private String lastName;
 	private String email;
+	private String username;
 	private String birthday;
 	private String password;
 	private String roast;
@@ -73,6 +74,12 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email= email;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username= username;
 	}
 	public String getBirthday() {
 		return birthday;

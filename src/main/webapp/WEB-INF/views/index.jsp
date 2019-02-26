@@ -11,14 +11,10 @@
 <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-	<header>
-	<span>
-			Hello ${ profile.firstName } ${ profile.lastName }
-	</span>
-	</header>
-	
+	<%@include file="partials/header.jsp" %>
 	<h1> Welcome to Schuyler's Coffee Shop Supply Depot!</h1>
 	
+	<p class="message">${ message }</p>
 <h3>
 <p> Get your fix with our premium coffee shop supplies!
 </p>

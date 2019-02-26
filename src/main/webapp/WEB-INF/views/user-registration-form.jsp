@@ -28,9 +28,14 @@
 		<p>
 			<label>Email:</label> <input type="email" name="email" required placeholder="Enter a vaild email address" pattern="[A-za-z0-9._%+-]+@[a-z0-9.-]+\.[A-Za-z]{2,}$" />
 		</p>
-		
+		<p>
+			<label>Username: </label> <input type="text" name="username" placeholder="Enter a new username" required minlength="3" required maxlength = "16" title="Must contain three or more characters"/>
+		</p>
 		<p>
 			<label>Password: </label> <input type="password" name="password" placeholder="Enter a new password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required maxlength = "16" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"/>
+		</p>
+		<p>
+			<label for="password2">Confirm Password:</label> <input id="password2" type="password" name="confirm-password" required minlength="8" />
 		</p>
 		<p>
 			Please select your preferred coffee roast (optional): 

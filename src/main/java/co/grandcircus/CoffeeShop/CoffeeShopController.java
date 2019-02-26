@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.grandcircus.CoffeeShop.Dao.ItemDao;
 import co.grandcircus.CoffeeShop.Dao.UserDao;
@@ -141,14 +142,20 @@ public class CoffeeShopController {
 	}
 	
 	@PostMapping("/user-registration-form")
-	public ModelAndView submitUserRegistrationForm(User user, HttpSession session) {
+	public ModelAndView submitUserRegistrationForm(User user, 
+			
+			HttpSession session) {
+		
+		System.out.println("You made it here");
 		session.setAttribute("profile", user);
 		ModelAndView mav = new ModelAndView("/user-summary");
 		return mav;
 	}
 	
 	@RequestMapping("/user-summary")
-	public ModelAndView showSummary( User user, HttpSession session) {
+	public ModelAndView showSummary( User user, 
+			@RequestParam("confirm-password") String confirmPassword,
+			HttpSession session, RedirectAttributes redir) {
 		//@RequestParam("firstName") String firstName,
 		//@RequestParam("lastName") String lastName,
 		//@RequestParam("email") String email,
@@ -166,11 +173,57 @@ public class CoffeeShopController {
 //		mav.addObject("password", password);
 //		mav.addObject("barista", barista);
 //		return mav;
-	 userDao.create(user);
+		User existingUser = userDao.findByUsername(user.getUsername());
+		if (existingUser != null) {
+			return new ModelAndView("user-registration-form", "message", "A user with that username already exists.");
+		}
+		
+		if (!confirmPassword.equals(user.getPassword())) {
+			return new ModelAndView("user-registration-form", "message", "Passwords do not match.");
+		}
+		
+		
+		userDao.create(user);
 	 session.setAttribute("profile", user);
+	redir.addFlashAttribute("message", "Thanks for signing up!");
+	System.out.println("You made it over here this time");
 	return new ModelAndView("user-summary");
 	}
 	
 
+	
+	@RequestMapping("/login")
+	public ModelAndView showLoginForm() {
+		return new ModelAndView("login");
+	}
+
+	@PostMapping("/login")
+	// get the username and password from the form when it's submitted.
+	public ModelAndView submitLoginForm(
+			@RequestParam("username") String username,
+			@RequestParam("password") String password,
+			HttpSession session, RedirectAttributes redir) {
+		
+		User user = userDao.findByUsername(username);
+		if (user==null || !user.getPassword().equals(password)) {
+			return new ModelAndView("login", "message", "Incorrect username or password.");
+		}
+		
+		// log the user in
+		session.setAttribute("profile", user);
+		
+		redir.addFlashAttribute("message", "Welcome. Thank you for logging in.");
+		return new ModelAndView("redirect:/");
+
+	}
+	
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpSession session, RedirectAttributes redir) {
+		session.invalidate();
+		redir.addFlashAttribute("message", "Logged out.");
+		return new ModelAndView("redirect:/");
+	}
+	
+	
 	
 }

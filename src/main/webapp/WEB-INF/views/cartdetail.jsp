@@ -6,33 +6,29 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Item Detail</title>
+<title>Cart Item Detail</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <div>
-		<h1>Coffee Shop Items For Sale</h1>
+		<h1>Cart Item Details</h1>
 		<table>
 			<tr>
-				<th>Name</th>
-				<td>${item.name}</td>
+				<th>Name of Item in You Cart</th>
+				<td>${cartItem.item.name}</td>
 			</tr>
 			<tr>
-				<th>Description</th>
-				<td>${item.description}</td>
+				<th>Quantity In Cart</th>
+				<td>${cartItem.cartQuantity}</td>
 			</tr>
 			<tr>
-				<th>Quantity</th>
-				<td>${item.storeQuantity}</td>
-			</tr>
-			<tr>
-				<th>Price</th>
+				<th>Unit Price</th>
 				<td><fmt:formatNumber value="${item.price}" type="currency" /></td>
 			</tr>
 		</table>
 		<a href="/items/${item.id}/edit">Edit</a>
-		<a class = "confirmation" href="/items/${item.id}/delete" onclick="return confirm ('Are you sure?')">Delete</a>
+		<a href="/items/${item.id}/delete">Delete</a>
 		<a href="/items">Back to List</a>
 	</div>
 </body>
